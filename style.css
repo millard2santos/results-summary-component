@@ -30,6 +30,7 @@ body {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+
 }
 
 /*
@@ -69,27 +70,41 @@ h6 {
 
 :root {
 
-  /* Main Colors */
-  --light-red: hsl(0, 100%, 67%);
-  --orange-yellow: hsl(39, 100%, 56%);
-  --green-teal: hsl(166, 100%, 37%);
-  --cobalt-blue: hsl(234, 85%, 45%);
+  --raw-light-red: 0, 100%, 67%;
+  --raw-orange-yellow: 39, 100%, 56%;
+  --raw-green-teal: 166, 100%, 37%;
+  --raw-cobalt-blue: 234, 85%, 45%;
 
+  --raw-light-slate-blue: 252, 100%, 67%;
+  --raw-light-royal-blue: 241, 81%, 54%;
+
+  --raw-violet-blue: 256, 72%, 46%, 1;
+  --raw-persian-blue: 241, 72%, 46%, 0;
+  --raw-dark-gray-blue: 224, 30%, 27%;
+
+
+  /* Main Colors */
+  --light-red: hsl(var(--raw-light-red));
+  --orange-yellow: hsl(var(--raw-orange-yellow));
+  --green-teal: hsl(var(--raw-green-teal));
+  --cobalt-blue: hsl(var(--raw-cobalt-blue));
+  
 
   /* Gradients */
 
-  --light-slate-blue: hsl(252, 100%, 67%);
-  --light-royal-blue: hsl(241, 81%, 54%);
+  --light-slate-blue: hsl(var(--raw-light-slate-blue));
+  --light-royal-blue: hsl(var(--raw-light-royal-blue));
 
-  --violet-blue: hsla(256, 72%, 46%, 1);
-  --persian-blue: hsla(241, 72%, 46%, 0);
+  --violet-blue: hsla(var(--raw-violet-blue));
+  --persian-blue: hsla(var(--raw-persian-blue));
 
   /* Neutral Colors */
 
   --pale-blue: hsl(222, 100%, 96%);
   --light-lavender: hsl(241, 100%, 89%);
-  --dark-gray-blue: hsl(224, 30%, 27%);
-
+ 
+  --dark-gray-blue: hsl(var(--raw-dark-gray-blue));
+  
   /* Fonts */
 
   --fontsize-para: 1.125rem;
@@ -103,7 +118,14 @@ h6 {
 body {
   font-family: 'Hanken Grotesk', sans-serif;
   background-color: white;
+  min-height: 100vh;
+  display: grid;
+ 
+  place-content: center;
+}
 
+main{
+  max-width: 600px;
 }
 
 .main {
@@ -173,6 +195,9 @@ h1 {
 
 .results {
   padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap:1.2rem
 }
 
 .hold__results {
@@ -221,14 +246,46 @@ h1 {
 }
 
 .category__result {
-  opacity: 0.5;
-  font-weight: var(--font-medium);
-}
-
-.category__resukt span {
-  color: var(--dark-gray-blue);
+  color :hsl(var(--raw-dark-gray-blue), 0.5);
   font-weight: var(--font-bold);
+}  
+
+.category__result span {
+  color: var(--dark-gray-blue)
 }
 
 
+.category:nth-of-type(1)  {
+ background-color: hsl(var(--raw-light-red), 0.1) ;
+}
+.category:nth-of-type(2)  {
+ background-color: hsl(var(--raw-orange-yellow), 0.1) ;
+}
+.category:nth-of-type(3)  {
+ background-color: hsl(var(--raw-green-teal), 0.1) ;
+}
+.category:nth-of-type(4)  {
+ background-color: hsl(var(--raw-cobalt-blue), 0.1) ;
+}
 
+
+.button {
+  min-width: 100%;
+  padding: 0.7rem;
+  border-radius: 999px;
+  border: 0;
+  background: var(--dark-gray-blue);
+  color : white
+}
+
+
+@media (min-width: 615px) {
+ main {
+  display: flex;
+
+ }
+ 
+ .results {
+  box-shadow: 1rem 1rem 5rem var(--dark-gray-blue);
+ }
+}
